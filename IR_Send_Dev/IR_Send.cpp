@@ -2,14 +2,14 @@
 
 void IR_Send::generatePacket(uint8_t &data){
     packet = 0x0001;
-    if(player_ID > 31){
-        hwlib::cout << "INVALID PLAYER_ID. USING DEFAULT VALUE 0x1F" << hwlib::endl;
-        player_ID = 31;
-    }
-    if(data > 31){
-        hwlib::cout << "INVALID DATA. USING DEFAULT VALUE 0x1F" << hwlib::endl;
-        data = 31;
-    }
+//    if(player_ID > 31){
+//        hwlib::cout << "INVALID PLAYER_ID. USING DEFAULT VALUE 0x1F" << hwlib::endl;
+//        player_ID = 31;
+//    }
+//    if(data > 31){
+//        hwlib::cout << "INVALID DATA. USING DEFAULT VALUE 0x1F" << hwlib::endl;
+//        data = 31;
+//    }
     data_xor = (player_ID ^ data);
     packet += uint16_t(player_ID << 1) + uint16_t(data << 6) + uint16_t(data_xor << 11);
 }
